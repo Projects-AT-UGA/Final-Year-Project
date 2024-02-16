@@ -1,5 +1,3 @@
-
-
 import dpkt
 
 def print_mdns_packets(pcap_file):
@@ -13,7 +11,18 @@ def print_mdns_packets(pcap_file):
                 if udp.sport == 5353 or udp.dport == 5353:
                     mdns = dpkt.dns.DNS(udp.data)
                     if mdns.qr == dpkt.dns.DNS_R:
-                        print(f"Timestamp: {timestamp}, mDNS Packet: {mdns}")
+                        print(f"Timestamp: {timestamp}")
+                        print("mDNS Packet:")
+                        print("\tQR:", "Response" if mdns.qr == dpkt.dns.DNS_R else "Query")
+                        print("\tOPCODE:", mdns.opcode)
+                        print("\tQDCOUNT:", len(mdns.qd))
+                        print("\tANCOUNT:", len(mdns.an))
+                        print("\tNSCOUNT:", len(mdns.ns))
+                        print("\tARCOUNT:", len(mdns.ar))
+                        for q in mdns.qd:
+                            print("\tQuestion:", q.name, q.type, q.cls)
+                        for rr in mdns.an:
+                            print("\tAnswer:", rr.name, rr.type, rr.rdata)
                         # Additional processing or printing of mDNS packet details can be done here
 
 def main():
