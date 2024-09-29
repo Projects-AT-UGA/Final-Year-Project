@@ -27,7 +27,7 @@ def process_pcap_files(directory, target_ip):
     Extract DNS packets related to the target IP from each PCAP file.
     """
     all_dns_packets = []
-
+    print(directory)
     # Walk through the directory and subdirectories to find .pcap files
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -51,13 +51,12 @@ def save_to_pcap(packets, output_pcap_file):
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Usage: python parse_pcap_dns.py <pcap_folder> <target_ip> <output.pcap>")
+        print("Usage: python ip_address_Collector.py <pcap_folder> <target_ip> <output.pcap> ========= eg: python ip_address_Colletor.py ./India/20221201 192.168.2.42 output.pcap")
         sys.exit(1)
 
     pcap_folder = sys.argv[1]
     target_ip = sys.argv[2]
     output_pcap = sys.argv[3]
-
     # Recursively find and process all PCAP files in the given folder
     all_dns_packets = process_pcap_files(pcap_folder, target_ip)
 
