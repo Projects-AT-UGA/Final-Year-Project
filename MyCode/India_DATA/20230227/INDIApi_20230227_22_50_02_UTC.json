@@ -1,0 +1,822 @@
+{
+    "Office (3)._ecobee._tcp.local.": [
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:50:54.525933",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:50:54.769106",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:50:55.042605",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:51:06.811391",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:51:07.541482",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:51:07.809510",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:51:08.079921",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:31.102751",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:31.362292",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:31.619168",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:53.736059",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:55.239323",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:55.239326",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:55.239406",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:53:00.617206",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:53:01.351850",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:53:01.660406",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.49",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:53:01.877987",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office-2.local."
+            ],
+            "rdata": [
+                "192.168.2.49"
+            ]
+        }
+    ],
+    "Office._hap._tcp.local.": [
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:51:07.559813",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:51:07.811616",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:51:08.072217",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:32.110631",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:32.816546",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:33.056298",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:52:33.407147",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:53:36.473380",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:53:36.693924",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:53:36.949786",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:53:46.953678",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:53:47.206144",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:53:47.463754",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "Office.local."
+            ],
+            "rdata": [
+                "192.168.2.38"
+            ]
+        }
+    ],
+    "_ecobee._tcp.local.": [
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:54:01.293153",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ecobee._tcp.local."
+            ],
+            "rdata": [
+                "b'Office._ecobee._tcp.local.'"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:54:10.314960",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ecobee._tcp.local."
+            ],
+            "rdata": [
+                "b'Office._ecobee._tcp.local.'"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:54:29.678481",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 32769,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ecobee._tcp.local."
+            ],
+            "rdata": [
+                "b'Office._ecobee._tcp.local.'"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:54:30.688562",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ecobee._tcp.local."
+            ],
+            "rdata": [
+                "b'Office._ecobee._tcp.local.'"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:54:33.708092",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ecobee._tcp.local."
+            ],
+            "rdata": [
+                "b'Office._ecobee._tcp.local.'"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.38",
+            "destination_ip": "224.0.0.251",
+            "date": "2023-02-27 17:54:42.729405",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ecobee._tcp.local."
+            ],
+            "rdata": [
+                "b'Office._ecobee._tcp.local.'"
+            ]
+        }
+    ]
+}

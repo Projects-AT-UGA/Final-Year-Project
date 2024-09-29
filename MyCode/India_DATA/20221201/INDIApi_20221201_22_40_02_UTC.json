@@ -1,0 +1,204 @@
+{
+    "_viziocast._tcp.local.": [
+        {
+            "source_ip": "192.168.2.9",
+            "destination_ip": "224.0.0.251",
+            "date": "2022-12-01 17:42:05.051078",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ipp._tcp.local."
+            ],
+            "rdata": [
+                "b'HP OfficeJet Pro 6970 [EF7F07]._ipp._tcp.local.'"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.9",
+            "destination_ip": "224.0.0.251",
+            "date": "2022-12-01 17:42:06.052872",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ipp._tcp.local."
+            ],
+            "rdata": [
+                "b'HP OfficeJet Pro 6970 [EF7F07]._ipp._tcp.local.'"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.9",
+            "destination_ip": "224.0.0.251",
+            "date": "2022-12-01 17:42:08.053761",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ipp._tcp.local."
+            ],
+            "rdata": [
+                "b'HP OfficeJet Pro 6970 [EF7F07]._ipp._tcp.local.'"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.9",
+            "destination_ip": "224.0.0.251",
+            "date": "2022-12-01 17:42:12.055460",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ipp._tcp.local."
+            ],
+            "rdata": [
+                "b'HP OfficeJet Pro 6970 [EF7F07]._ipp._tcp.local.'"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.9",
+            "destination_ip": "224.0.0.251",
+            "date": "2022-12-01 17:42:20.055714",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ipp._tcp.local."
+            ],
+            "rdata": [
+                "b'HP OfficeJet Pro 6970 [EF7F07]._ipp._tcp.local.'"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.9",
+            "destination_ip": "224.0.0.251",
+            "date": "2022-12-01 17:42:36.067484",
+            "id": 0,
+            "qtype": 12,
+            "qclass": 1,
+            "qtype_human_readable": "PTR",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "PTR",
+            "rrname": [
+                "_ipp._tcp.local."
+            ],
+            "rdata": [
+                "b'HP OfficeJet Pro 6970 [EF7F07]._ipp._tcp.local.'"
+            ]
+        }
+    ],
+    "mt7687.local.": [
+        {
+            "source_ip": "192.168.2.30",
+            "destination_ip": "224.0.0.251",
+            "date": "2022-12-01 17:42:14.720502",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 32769,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "RESERVED",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "mt7687.local."
+            ],
+            "rdata": [
+                "192.168.2.30"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.30",
+            "destination_ip": "224.0.0.251",
+            "date": "2022-12-01 17:42:14.970940",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "mt7687.local."
+            ],
+            "rdata": [
+                "192.168.2.30"
+            ]
+        },
+        {
+            "source_ip": "192.168.2.30",
+            "destination_ip": "224.0.0.251",
+            "date": "2022-12-01 17:42:15.221948",
+            "id": 0,
+            "qtype": 255,
+            "qclass": 1,
+            "qtype_human_readable": "ANY",
+            "qclass_human_readable": "IN",
+            "rd": 0,
+            "tc": 0,
+            "aa": 0,
+            "opcode": 0,
+            "opcode_human_readable": "Query",
+            "response_type": "ANY",
+            "rrname": [
+                "mt7687.local."
+            ],
+            "rdata": [
+                "192.168.2.30"
+            ]
+        }
+    ]
+}
