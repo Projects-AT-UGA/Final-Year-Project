@@ -3,40 +3,44 @@ import argparse
 from scapy.all import rdpcap, DNSQR, IP
 from collections import defaultdict
 
-# Function to parse a single PCAP file and count DNS queries by domain and IP address
+# Function to parse a single PCAP file and count DNS queries, domains, and destination IPs per source IP
 def parse_pcap_file(pcap_file, ip_filter=None):
-    # Dictionary to store count of requests per domain
-    domain_requests = defaultdict(int)
-    # Dictionary to store count of requests per IP address
-    ip_requests = defaultdict(int)
+    # Dictionary to store count of DNS queries, domain names, and destination IPs per source IP
+    ip_requests = defaultdict(lambda: {'count': 0, 'domains': defaultdict(int), 'dest_ips': defaultdict(int)})
 
     # Read the PCAP file
     packets = rdpcap(pcap_file)
 
     # Iterate through each packet
     for packet in packets:
-        # Check if the packet has a DNS query layer
-        if packet.haslayer(DNSQR):
-            # If IP filter is provided, check if it matches the packet's source IP
+        # Check if the packet has a DNS query layer and IP layer
+        if packet.haslayer(DNSQR) and packet.haslayer(IP):
+            # Extract the source IP address
             src_ip = packet[IP].src
+            # Extract the destination IP address
+            dest_ip = packet[IP].dst
+
+            # If IP filter is provided, count only queries from the specified IP
             if ip_filter and src_ip != ip_filter:
-                continue  # Skip if IP doesn't match the provided IP filter
+                continue  # Skip if IP doesn't match the filter
 
-            # Extract the queried domain name
-            queried_domain = packet[DNSQR].qname.decode('utf-8').strip('.')
-            domain_requests[queried_domain] += 1
+            # Increment the DNS query count for this source IP
+            ip_requests[src_ip]['count'] += 1
 
-            # Count the number of queries per source IP address
-            ip_requests[src_ip] += 1
+            # Increment the count for the destination IP
+            ip_requests[src_ip]['dest_ips'][dest_ip] += 1
 
-    return domain_requests, ip_requests
+            # Extract the domain name being queried
+            domain_name = packet[DNSQR].qname.decode('utf-8')
+            # Increment the count for the domain queried by this source IP
+            ip_requests[src_ip]['domains'][domain_name] += 1
 
-# Function to parse all PCAP files in a folder
+    return ip_requests
+
+# Function to parse all PCAP files in a folder and aggregate the results for all IPs
 def parse_pcap_folder(folder, ip_filter=None):
-    # Dictionary to store cumulative count of requests per domain
-    all_domain_requests = defaultdict(int)
-    # Dictionary to store cumulative count of requests per IP address
-    all_ip_requests = defaultdict(int)
+    # Dictionary to store cumulative count of requests per IP address and their domains
+    all_ip_requests = defaultdict(lambda: {'count': 0, 'domains': defaultdict(int), 'dest_ips': defaultdict(int)})
 
     # Iterate over all files in the folder
     for filename in os.listdir(folder):
@@ -45,38 +49,42 @@ def parse_pcap_folder(folder, ip_filter=None):
             pcap_file_path = os.path.join(folder, filename)
             print(f"Processing {pcap_file_path}")
             # Parse the individual PCAP file
-            file_domain_requests, file_ip_requests = parse_pcap_file(pcap_file_path, ip_filter)
+            file_ip_requests = parse_pcap_file(pcap_file_path, ip_filter)
 
-            # Aggregate the domain results
-            for domain, count in file_domain_requests.items():
-                all_domain_requests[domain] += count
+            # Aggregate the IP and domain results
+            for ip, data in file_ip_requests.items():
+                all_ip_requests[ip]['count'] += data['count']
+                for domain, count in data['domains'].items():
+                    all_ip_requests[ip]['domains'][domain] += count
+                for dest_ip, count in data['dest_ips'].items():
+                    all_ip_requests[ip]['dest_ips'][dest_ip] += count
 
-            # Aggregate the IP results
-            for ip, count in file_ip_requests.items():
-                all_ip_requests[ip] += count
-
-    return all_domain_requests, all_ip_requests
+    return all_ip_requests
 
 # Command-line argument parser setup
 def main():
-    print("example query: python Number_Of_Queries_To_SingleIP.py ./India/20221201 --ip 192.168.2.42")
-    parser = argparse.ArgumentParser(description="Parse a folder of PCAP files and count DNS queries by domain and IP.")
+    parser = argparse.ArgumentParser(description="Parse a folder of PCAP files and count DNS queries by IP address, domain names, and destination IPs.")
     parser.add_argument("folder", help="Path to the folder containing PCAP files")
     parser.add_argument("--ip", help="Filter queries for a specific source IP address", required=False)
     args = parser.parse_args()
 
     # Parse the folder and optionally filter by IP
-    domain_requests, ip_requests = parse_pcap_folder(args.folder, ip_filter=args.ip)
+    ip_requests = parse_pcap_folder(args.folder, ip_filter=args.ip)
 
-    # Display results for domain queries
-    print("\nDNS Query Count by Domain:")
-    for domain, count in domain_requests.items():
-        print(f"{domain}: {count} queries")
-
-    # Display results for IP queries
-    print("\nDNS Query Count by IP Address:")
-    for ip, count in ip_requests.items():
-        print(f"{ip}: {count} queries")
+    # Display results
+    for ip, data in ip_requests.items():
+        if args.ip and ip != args.ip:
+            continue  # Skip if filtering by specific IP and it doesn't match
+        print("================================================================")
+        print(f"\nSource IP: {ip}")
+        print(f"Total DNS Queries: {data['count']}")
+        print("Queried Domain Names:")
+        for domain, count in data['domains'].items():
+            print(f"  {domain}: {count} queries")
+        print()
+        print("Destination IP Addresses:")
+        for dest_ip, count in data['dest_ips'].items():
+            print(f"  {dest_ip}: {count} queries")
 
 if __name__ == "__main__":
     main()
