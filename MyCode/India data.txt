@@ -1,0 +1,87 @@
+India manually entered data
+=========================================================================
+
+sengled Element classic smart bulb starter kit = 192.168.2.8
+Philips hue bridge = 192.168.2.25
+tp link kasa smart wifi light bulb multicolor = 192.168.2.24
+pixstar foto connect xd wifi 10:n = 192.168.2.2
+Insignia FireTv = 192.168.2.43
+Samsung wisenet smartcam A1 = 192.168.2.4
+tp-link tap pan tilt homesecurity wifi camera = 192.168.2.5
+reolink rlc 520 = 
+wansview wireless cloud ptz ip camera Q5 1080p = 192.168.2.15
+amerest security turret camera = 192.168.2.35
+d-link omna 180 cam hd = 192.168.2.6
+d-link full hd pan & tilt pro hd wifi camera = 192.168.2.26
+yi 1080p home camera ai plus = 192.168.2.31
+blink mini indoor plug in hd smart security camera = 192.168.2.41
+xiomi 360 home security camera 2k = 192.168.2.44
+google nest mini = 192.168.2.42
+amazon echo = 192.168.2.11
+amazon echo dot = 192.168.2.10
+amazon echo dot 3rd gen = 192.168.2.9
+Netatmo smart home weather station = 192.168.2.17
+august wifi smart lock = 192.168.2.245
+tapo mini smart wifi socket = 
+tapo mini smart wifi socket = 
+kasa smart wifi plug mini = 
+kasa smart wifi plug mini = 
+blink sync module 2 = 192.168.2.40
+tp-link kasa smart light strip = 192.168.2.47
+macros smart wifi garage door opener = 192.168.2.30
+ring doorbell 4 = 19.168.2.48
+wemo wifi smart dimmer = 192.168.2.37
+ecobee switch+ = 192.168.2.38
+google nest thermostat = 192.168.2.50
+ecobee 3lite smart thermostat = 192.168.2.49
+lametric time = 192.168.2.16
+withings body+ smart scale = 192.168.2.12
+hp Officejet pro 6978 = 192.168.2.18
+iRobot Roomba robot vaccum = 192.168.2.32
+
+
+
+
+json format converted using chatgpt
+=================================================================================
+
+{
+  "sengled Element classic smart bulb starter kit": "192.168.2.8",
+  "Philips hue bridge": "192.168.2.25",
+  "tp link kasa smart wifi light bulb multicolor": "192.168.2.24",
+  "pixstar foto connect xd wifi 10:n": "192.168.2.2",
+  "Insignia FireTv": "192.168.2.43",
+  "Samsung wisenet smartcam A1": "192.168.2.4",
+  "tp-link tap pan tilt homesecurity wifi camera": "192.168.2.5",
+  "reolink rlc 520": null,
+  "wansview wireless cloud ptz ip camera Q5 1080p": "192.168.2.15",
+  "amerest security turret camera": "192.168.2.35",
+  "d-link omna 180 cam hd": "192.168.2.6",
+  "d-link full hd pan & tilt pro hd wifi camera": "192.168.2.26",
+  "yi 1080p home camera ai plus": "192.168.2.31",
+  "blink mini indoor plug in hd smart security camera": "192.168.2.41",
+  "xiomi 360 home security camera 2k": "192.168.2.44",
+  "google nest mini": "192.168.2.42",
+  "amazon echo": "192.168.2.11",
+  "amazon echo dot": "192.168.2.10",
+  "amazon echo dot 3rd gen": "192.168.2.9",
+  "Netatmo smart home weather station": "192.168.2.17",
+  "august wifi smart lock": "192.168.2.245",
+  "tapo mini smart wifi socket (first device)": null,
+  "tapo mini smart wifi socket (second device)": null,
+  "kasa smart wifi plug mini (first device)": null,
+  "kasa smart wifi plug mini (second device)": null,
+  "blink sync module 2": "192.168.2.40",
+  "tp-link kasa smart light strip": "192.168.2.47",
+  "macros smart wifi garage door opener": "192.168.2.30",
+  "ring doorbell 4": "19.168.2.48",
+  "wemo wifi smart dimmer": "192.168.2.37",
+  "ecobee switch+": "192.168.2.38",
+  "google nest thermostat": "192.168.2.50",
+  "ecobee 3lite smart thermostat": "192.168.2.49",
+  "lametric time": "192.168.2.16",
+  "withings body+ smart scale": "192.168.2.12",
+  "hp Officejet pro 6978": "192.168.2.18",
+  "iRobot Roomba robot vaccum": "192.168.2.32"
+}
+

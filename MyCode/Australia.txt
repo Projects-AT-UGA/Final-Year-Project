@@ -1,0 +1,91 @@
+Australia manually entered data
+=========================================================================
+tplink kasa smart wifi light bulb = 192.168.1.24
+Philips hue bridge = 192.168.1.8
+singled element classic smart bulb starter kit = 192.168.1.8
+pixstar Foto connect xd wifi 10:n = 192.168.1.2
+Logitech harmony hub = 192.168.1.39
+insignia FireTv = 192.168.1.43
+Samsung klisenet smart cam A1 = 192.168.1.4
+Reolink RLC-520 = 192.168.1.33
+Tp-link Home security wifi camera = 192.168.1.5
+Reolink RLC-520 = 192.168.1.34
+Wansview wireless cloud ptz ip camera Q5 1080p = 192.168.1.15
+amcrest security turrent camera = 192.168.1.35
+D-link omna 180cam hd = 192.168.1.6
+microseven camera = 192.168.1.36
+D-link full hd pan & tilt pro hd wifi camera = 192.168.1.26
+yi 1080p home camera AI plus = 192.168.1.31
+Xiami 360 home security camera 2k = 192.168.1.44
+google nest mini = 192.168.1.42
+amazon echo = 192.168.1.11
+amazon echo dot 3rd gen = 192.168.1.9
+amazon echo dot = 192.168.1.10
+la metric time = 192.168.1.16
+Netatmo smart home weather station = 192.168.1.17
+tp-link tapo mini smart wifi socket = 192.168.1.19
+tp-link tapo mini smart wifi socket = 192.168.1.20
+kasa smart wifi plug mini = 192.168.1.21
+kasa smart wifi plug mini = 192.168.1.22
+august wifi smart lock = 192.168.1.40
+switchbot hub mini = 192.168.1.27
+tp-link kasa smart light strip = 192.168.1.47
+meross smart wifi garage door opener = 192.168.1.30
+Belkin wemo wifi smart dimmer = 192.168.1.37
+echobee switch+ = 192.168.1.38
+ring doorbell 4 = 192.168.1.48
+ecobee 3lite smart thermostat = 192.168.1.49
+google nest thermostat = 192.168.1.50
+Samsung smarthtings hub = 192.168.1.28
+Honeywell color smart thermostat = 192.168.1.51
+hp officer jet pro 6978 = 192.168.1.18
+wifithings body + smart scale = 192.168.1.12
+iRobot romba robot vaccum = 192.168.1.32
+
+
+
+json format converted using chatgpt
+=================================================================================
+{
+  "tplink kasa smart wifi light bulb": "192.168.1.24",
+  "Philips hue bridge": "192.168.1.8",
+  "singled element classic smart bulb starter kit": "192.168.1.8",
+  "pixstar Foto connect xd wifi 10:n": "192.168.1.2",
+  "Logitech harmony hub": "192.168.1.39",
+  "insignia FireTv": "192.168.1.43",
+  "Samsung klisenet smart cam A1": "192.168.1.4",
+  "Reolink RLC-520": "192.168.1.33",
+  "Tp-link Home security wifi camera": "192.168.1.5",
+  "Reolink RLC-520 (second device)": "192.168.1.34",
+  "Wansview wireless cloud ptz ip camera Q5 1080p": "192.168.1.15",
+  "amcrest security turrent camera": "192.168.1.35",
+  "D-link omna 180cam hd": "192.168.1.6",
+  "microseven camera": "192.168.1.36",
+  "D-link full hd pan & tilt pro hd wifi camera": "192.168.1.26",
+  "yi 1080p home camera AI plus": "192.168.1.31",
+  "Xiami 360 home security camera 2k": "192.168.1.44",
+  "google nest mini": "192.168.1.42",
+  "amazon echo": "192.168.1.11",
+  "amazon echo dot 3rd gen": "192.168.1.9",
+  "amazon echo dot": "192.168.1.10",
+  "la metric time": "192.168.1.16",
+  "Netatmo smart home weather station": "192.168.1.17",
+  "tp-link tapo mini smart wifi socket (first device)": "192.168.1.19",
+  "tp-link tapo mini smart wifi socket (second device)": "192.168.1.20",
+  "kasa smart wifi plug mini (first device)": "192.168.1.21",
+  "kasa smart wifi plug mini (second device)": "192.168.1.22",
+  "august wifi smart lock": "192.168.1.40",
+  "switchbot hub mini": "192.168.1.27",
+  "tp-link kasa smart light strip": "192.168.1.47",
+  "meross smart wifi garage door opener": "192.168.1.30",
+  "Belkin wemo wifi smart dimmer": "192.168.1.37",
+  "echobee switch+": "192.168.1.38",
+  "ring doorbell 4": "192.168.1.48",
+  "ecobee 3lite smart thermostat": "192.168.1.49",
+  "google nest thermostat": "192.168.1.50",
+  "Samsung smarthtings hub": "192.168.1.28",
+  "Honeywell color smart thermostat": "192.168.1.51",
+  "hp officer jet pro 6978": "192.168.1.18",
+  "wifithings body + smart scale": "192.168.1.12",
+  "iRobot romba robot vaccum": "192.168.1.32"
+}
