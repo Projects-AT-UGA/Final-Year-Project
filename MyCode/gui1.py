@@ -50,8 +50,16 @@ device_dictionary = {
 
 
 # Function to analyze pcap files
+# Updated Function to Analyze PCAP Files
 def analyze_pcap_files(folder_path):
-    packet_count = {ip: {"input": 0, "output": 0, "last_time": None, "device_name": device_name} for ip, device_name in device_dictionary.items()}
+    packet_count = {
+        ip: {
+            "input": 0, "output": 0, "last_time": None, "device_name": device_name,
+            "tcp_input": 0, "tcp_output": 0,
+            "udp_input": 0, "udp_output": 0,
+            "icmp_input": 0, "icmp_output": 0
+        } for ip, device_name in device_dictionary.items()
+    }
 
     # Iterate through all pcap files in the folder
     for filename in os.listdir(folder_path):
@@ -63,15 +71,38 @@ def analyze_pcap_files(folder_path):
                     dst_ip = packet.ip.dst
                     timestamp = datetime.fromisoformat(packet.sniff_time.isoformat().replace('Z', ''))
 
+                    # Determine protocol type
+                    protocol = None
+                    if hasattr(packet, 'tcp'):
+                        protocol = 'tcp'
+                    elif hasattr(packet, 'udp'):
+                        protocol = 'udp'
+                    elif hasattr(packet, 'icmp'):
+                        protocol = 'icmp'
+
                     # Check if the packet's source IP is in the device dictionary
                     if src_ip in device_dictionary:
                         packet_count[src_ip]['output'] += 1
+                        if protocol == 'tcp':
+                            packet_count[src_ip]['tcp_output'] += 1
+                        elif protocol == 'udp':
+                            packet_count[src_ip]['udp_output'] += 1
+                        elif protocol == 'icmp':
+                            packet_count[src_ip]['icmp_output'] += 1
+
                         if (packet_count[src_ip]['last_time'] is None) or (timestamp > packet_count[src_ip]['last_time']):
                             packet_count[src_ip]['last_time'] = timestamp
 
                     # Check if the packet's destination IP is in the device dictionary
                     if dst_ip in device_dictionary:
                         packet_count[dst_ip]['input'] += 1
+                        if protocol == 'tcp':
+                            packet_count[dst_ip]['tcp_input'] += 1
+                        elif protocol == 'udp':
+                            packet_count[dst_ip]['udp_input'] += 1
+                        elif protocol == 'icmp':
+                            packet_count[dst_ip]['icmp_input'] += 1
+
                         if (packet_count[dst_ip]['last_time'] is None) or (timestamp > packet_count[dst_ip]['last_time']):
                             packet_count[dst_ip]['last_time'] = timestamp
                 except AttributeError:
@@ -83,6 +114,7 @@ def analyze_pcap_files(folder_path):
                     continue
 
     return packet_count
+
 
 # Function to format the time difference into human-readable format
 def format_time_since_last_packet(last_time):
@@ -106,11 +138,64 @@ def format_time_since_last_packet(last_time):
 
     return ", ".join(parts) if parts else "Just now"
 
-# Function to create the GUI
+import tkinter as tk
+from tkinter import ttk
+
 def create_gui(packet_count):
+    def update_treeview_with_filters(packet_count, include_tcp, include_udp, include_icmp):
+        # Clear current data in the treeview
+        for item in tree.get_children():
+            tree.delete(item)
+
+        # Recalculate and display the filtered data
+        for ip, data in packet_count.items():
+            input_packets = 0
+            output_packets = 0
+
+            # Add counts based on protocol inclusion
+            if include_tcp:
+                input_packets += data['tcp_input']
+                output_packets += data['tcp_output']
+            if include_udp:
+                input_packets += data['udp_input']
+                output_packets += data['udp_output']
+            if include_icmp:
+                input_packets += data['icmp_input']
+                output_packets += data['icmp_output']
+
+            last_time = data['last_time'].strftime('%Y-%m-%d %H:%M:%S') if data['last_time'] else "N/A"
+            time_since_last_packet = format_time_since_last_packet(data['last_time'])
+            tree.insert("", "end", values=(data['device_name'], input_packets, output_packets, last_time, time_since_last_packet))
+
+    def on_checkbox_change():
+        # Get the state of each checkbox
+        include_tcp = tcp_checkbox_var.get()
+        include_udp = udp_checkbox_var.get()
+        include_icmp = icmp_checkbox_var.get()
+
+        # Update treeview with selected filters
+        update_treeview_with_filters(packet_count, include_tcp, include_udp, include_icmp)
+
     root = tk.Tk()
     root.title("Packet Analysis")
-    
+
+    # Create a frame for the checkboxes and treeview
+    checkbox_frame = tk.Frame(root)
+    checkbox_frame.pack(fill=tk.X, padx=10, pady=5)
+
+    # Create checkboxes for each protocol
+    tcp_checkbox_var = tk.BooleanVar(value=True)
+    udp_checkbox_var = tk.BooleanVar(value=True)
+    icmp_checkbox_var = tk.BooleanVar(value=True)
+
+    tcp_checkbox = tk.Checkbutton(checkbox_frame, text="Include TCP", variable=tcp_checkbox_var, command=on_checkbox_change)
+    udp_checkbox = tk.Checkbutton(checkbox_frame, text="Include UDP", variable=udp_checkbox_var, command=on_checkbox_change)
+    icmp_checkbox = tk.Checkbutton(checkbox_frame, text="Include ICMP", variable=icmp_checkbox_var, command=on_checkbox_change)
+
+    tcp_checkbox.pack(side=tk.LEFT, padx=5)
+    udp_checkbox.pack(side=tk.LEFT, padx=5)
+    icmp_checkbox.pack(side=tk.LEFT, padx=5)
+
     # Create a frame for the treeview
     frame = tk.Frame(root)
     frame.pack(fill=tk.BOTH, expand=True)
@@ -130,11 +215,8 @@ def create_gui(packet_count):
     for col in ["Device", "Input Packets", "Output Packets", "Last Packet Time", "Time Since Last Packet"]:
         tree.heading(col, text=col, command=lambda _col=col: sort_column(tree, _col))
 
-    # Insert data into the treeview
-    for ip, data in packet_count.items():
-        last_time = data['last_time'].strftime('%Y-%m-%d %H:%M:%S') if data['last_time'] else "N/A"
-        time_since_last_packet = format_time_since_last_packet(data['last_time'])
-        tree.insert("", "end", values=(data['device_name'], data['input'], data['output'], last_time, time_since_last_packet))
+    # Insert data initially (with all protocols included)
+    update_treeview_with_filters(packet_count, True, True, True)
 
     # Resize handling
     def resize_tree(event):
@@ -144,6 +226,9 @@ def create_gui(packet_count):
     root.bind("<Configure>", resize_tree)
 
     root.mainloop()
+
+
+
 
 # Function to sort the treeview
 sort_order = {  # To keep track of sort order for each column
@@ -177,6 +262,10 @@ def sort_column(tree, col):
 if __name__ == "__main__":
     folder_path = "INDIA"  # Replace with the path to your folder containing pcap files
     packet_count = analyze_pcap_files(folder_path)
+    
+    for x,y in packet_count.items():
+        print(x,y)
+
     create_gui(packet_count)
 
 #filter by ip address of device and tcp and icmp and udp specific ip address
