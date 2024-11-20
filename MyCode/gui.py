@@ -179,8 +179,8 @@ if __name__ == "__main__":
     packet_count = analyze_pcap_files(folder_path)
     create_gui(packet_count)
 
-#filter by ip address of device and tcp and icmp and udp specific ip address
-#what is destinatio of out packets
-#filter with check box show 
+#filter with check box show and tcp and icmp and udp specific ip address
 #external ip adddress only
+#what is destinatio of out packets
+#filter by ip address of device 
 #web interface
