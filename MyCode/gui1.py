@@ -92,7 +92,8 @@ def analyze_pcap_files(folder_path):
 
                         if (packet_count[src_ip]['last_time'] is None) or (timestamp > packet_count[src_ip]['last_time']):
                             packet_count[src_ip]['last_time'] = timestamp
-
+ 
+ 
                     # Check if the packet's destination IP is in the device dictionary
                     if dst_ip in device_dictionary:
                         packet_count[dst_ip]['input'] += 1
