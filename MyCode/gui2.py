@@ -45,7 +45,8 @@ device_dictionary = {
     "192.168.2.48": "Ring_Doorbell4",
     "192.168.2.49": "Ecobee_3liteSmartThermostat",
     "192.168.2.50": "Google_NestThermostat",
-    "192.168.2.245": "August Wi-fi Smart Lock"
+    "192.168.2.245": "August Wi-fi Smart Lock",
+    "192.168.2.251":"router India"
 }
 
 

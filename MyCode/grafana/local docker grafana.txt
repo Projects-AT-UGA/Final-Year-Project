@@ -1,0 +1,114 @@
+creating MySQL container
+===============================================================
+docker run --name root -e MYSQL_ROOT_PASSWORD=Sql@10071999 -p 3307:3306 -v mysql-data:/var/lib/mysql -d mysql:latest
+docker exec -it root mysql -u root -p
+CREATE DATABASE main;
+use main;
+
+===============================================================
+docker pull grafana/grafana
+docker run -d --name=grafana -p 3001:3000 -v grafana-storage:/var/lib/grafana grafana/grafana
+goto http://localhost:3001/login
+
+default:
+username: admin
+password: admin
+=================================================================
+
+connection values
+hosturl: host.docker.internal:3307
+database: main
+username: root
+password: Sql@10071999
+
+
+
+
+
+how many devices are active -----------------------------
+
+tcp udp devices
+select more details how many packets per day tcp,udp,icmp
+how many statstics
+
+
+each single device
+per day number of bytes tcp sent and received
+per day number of bytes udp sent and received
+number of dns queries
+number of distinct queries
+
+timeseries plot last week - total number across last week
+number of active devices and inactive devices
+
+top devices 3 devices statistics
+
+initial version 3 week from now some information displayed in Grafana.
+spencer for server access docker container on faraday, running and deploying 
+
+
+
+python
+==================================
+pip install scapy mysql-connector-python
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE device_data (
+    ip_address VARCHAR(15) PRIMARY KEY,
+    input INT,
+    output INT,
+    last_time DATETIME,
+    device_name VARCHAR(255)
+);
+INSERT INTO device_data (ip_address, input, output, last_time, device_name) VALUES
+('192.168.2.2', 532, 529, '2023-03-02 17:52:28.987065', 'PixStar_FotoConnect'),
+('192.168.2.3', 0, 0, NULL, 'Google_NestProtect'),
+('192.168.2.4', 447, 3754, '2023-03-02 18:00:43.739452', 'Samsung_WisenetSmartCam_A1'),
+('192.168.2.5', 364, 365, '2023-03-02 17:58:43.870808', 'TP-Link_TapoHomesecurityCamera'),
+('192.168.2.6', 0, 22, '2023-03-02 17:35:43.762688', 'Dlink_Omna180CamHD'),
+('192.168.2.8', 333, 492, '2023-03-02 18:00:43.706549', 'Sengled_SmartBulbStarterKit'),
+('192.168.2.9', 616, 100, '2023-03-02 17:30:25.663030', 'Amazon_EchoDot3rdGeneration'),
+('192.168.2.10', 659, 118, '2023-03-02 17:59:50.336114', 'Amazon_EchoDot'),
+('192.168.2.11', 652, 107, '2023-03-02 17:59:25.030289', 'Amazon_Echo'),
+('192.168.2.12', 0, 0, NULL, 'Withings_Body+SmartScale'),
+('192.168.2.15', 376, 1329, '2023-03-02 18:00:43.883634', 'Wansview_WirelessCloudcamera'),
+('192.168.2.16', 341, 821, '2023-03-02 18:00:17.755678', 'SmartAtoms_LaMetricTime'),
+('192.168.2.17', 594, 10, '2023-03-02 17:50:43.817722', 'Netatmo_SmartHomeWeatherStation'),
+('192.168.2.18', 838, 944, '2023-03-02 18:00:43.844522', 'HP_OfficeJetPro6978'),
+('192.168.2.19', 530, 364, '2023-03-02 17:24:05.203009', 'TP-Link_TapoMiniSmartWifiSocket1'),
+('192.168.2.20', 521, 294, '2023-03-02 17:25:25.848759', 'TP-Link_TapoMiniSmartWifiSocket2'),
+('192.168.2.21', 412, 371, '2023-03-02 17:26:33.575243', 'TP-Link_KasaSmartWifiPlugMini1'),
+('192.168.2.22', 364, 328, '2023-03-02 17:27:30.609696', 'TP-Link_KasaSmartWifiPlugMini2'),
+('192.168.2.23', 334, 311, '2023-03-02 17:50:43.746784', 'Lifx_SmarterLights'),
+('192.168.2.24', 376, 336, '2023-03-02 17:29:17.309178', 'TP-Link_KasaSmartWiFiLightBulbMulticolor'),
+('192.168.2.25', 630, 2372, '2023-03-02 18:00:22.098465', 'Philips_HueBridge'),
+('192.168.2.26', 890, 549, '2023-03-02 17:58:43.830810', 'D-Link_FullHDPan&TiltProHDWifiCamera'),
+('192.168.2.30', 454, 497, '2023-03-02 17:57:29.728696', 'Meross_SmartWiFiGarageDoorOpener'),
+('192.168.2.31', 398, 371, '2023-03-02 17:35:01.905505', 'Yi_1080pHomeCameraAIPlus'),
+('192.168.2.32', 519, 161, '2023-03-02 17:35:53.515576', 'iRobot_RoombaRobotVaccum'),
+('192.168.2.33', 535, 510, '2023-03-02 17:37:42.216169', 'Reolink_RLC520Camera1'),
+('192.168.2.34', 543, 518, '2023-03-02 17:39:55.212926', 'Reolink_RLC520Camera2'),
+('192.168.2.35', 442, 1150, '2023-03-02 18:00:43.737609', 'Amcrest_SecurityTurretCamera'),
+('192.168.2.37', 522, 567, '2023-03-02 18:00:39.519690', 'Wemo_WiFiSmartLightSwitch'),
+('192.168.2.38', 501, 906, '2023-03-02 18:00:50.587613', 'Ecobee_Switch+'),
+('192.168.2.40', 506, 109, '2023-03-02 17:45:51.590958', 'Blink Sync Module 2'),
+('192.168.2.41', 355, 311, '2023-03-02 17:46:43.852083', 'Blink Mini indoor Plug-In HD smart security Camera'),
+('192.168.2.42', 409, 1358, '2023-03-02 18:00:57.037261', 'Google nest Mini');

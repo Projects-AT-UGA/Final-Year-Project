@@ -81,7 +81,7 @@ def analyze_pcap_files(folder_path):
                     # Handle invalid timestamp formats
                     print(f"Error parsing timestamp for packet: {packet}")
                     continue
-
+                    
     return packet_count
 
 # Function to format the time difference into human-readable format
@@ -177,6 +177,7 @@ def sort_column(tree, col):
 if __name__ == "__main__":
     folder_path = "INDIA"  # Replace with the path to your folder containing pcap files
     packet_count = analyze_pcap_files(folder_path)
+    print(packet_count)
     create_gui(packet_count)
 
 #filter with check box show and tcp and icmp and udp specific ip address
