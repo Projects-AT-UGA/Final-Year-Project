@@ -89,6 +89,7 @@ def iterate_parse_pcap(subdirs, ip_address, dns_data):
                     opcode = packet.getlayer(DNS).opcode
 
                     # add data to dictionary
+                    
                     if domain not in dns_data:
                         dns_data[domain] = []
                     dns_data[domain].append({
@@ -102,6 +103,7 @@ def iterate_parse_pcap(subdirs, ip_address, dns_data):
                         "aa": aa,
                         "opcode": opcode
                     })
+                    # print(dns_data)
 
 # This function is to change the ip_address. Specifically, change the subnet to india.                 
 def change_ip(ip_str):
@@ -211,7 +213,7 @@ if __name__ == "__main__":
     # Only Change the below paths accordingly.
     path_aus  = './AUSTRALIA_PCAPS/'
     path_ind = '/.../.../.../.../INDIA_PCAPS/'
-
+    print(args.vendor)
 
     if args.vendor:
         if args.day:
@@ -253,7 +255,7 @@ if __name__ == "__main__":
                 subdirs = sort_pcapdir(path_ind)
                 ind_ip_address = change_ip(ip_address)
 
-                iterate_parse_pcap(subdirs, ind_ip_address, dns_data_ind)
+                # iterate_parse_pcap(subdirs, ind_ip_address, dns_data_ind)
 
                 ind = compare_values(dns_data_ind)
 
@@ -368,7 +370,7 @@ if __name__ == "__main__":
             subdirs = sort_pcapdir(path_ind)
             ind_ip_address = change_ip(items)
 
-            iterate_parse_pcap(subdirs, ind_ip_address, dns_data_ind)
+            #iterate_parse_pcap(subdirs, ind_ip_address, dns_data_ind)
 
             ind = compare_values(dns_data_ind)
 
@@ -391,12 +393,14 @@ if __name__ == "__main__":
                 device_name = device_dictionary[items]
             else:
                 print("Device does not exist in the device_dictionary. Kindly check.")
-            
-            with open("dns_invariants_" +args.date + duration +".json", "r") as outfile: 
-                data = json.loads(outfile.read())
-                data[device_name] = result
-
-            with open("dns_invariants_"  +args.date + duration +".json", "w") as output_file:
+            data={}
+            try:
+                with open("dns_invariants_" +args.date + duration +".json", "r") as outfile: 
+                    data = json.loads(outfile.read())
+                    data[device_name] = result
+            except:
+                pass
+            with open("dns_invariants_"  +args.date + duration +".json", "w+") as output_file:
                 json.dump(data, output_file, indent=4)
         
         remove_dups("dns_invariants_"  +args.date + duration +".json")

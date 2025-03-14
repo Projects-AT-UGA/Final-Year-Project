@@ -1,0 +1,443 @@
+{
+    "192.168.1.4": {
+        "PTR": [
+            {
+                "rrname": "_http._tcp.local.",
+                "rdata": "SNS-R0810W-SAMSUNG-SNS-R0810W-00166CDF59C5 tcp._http._tcp.local."
+            }
+        ],
+        "TXT": [
+            {
+                "rrname": "_http._tcp.local.",
+                "rdata": [
+                    "sn=ZF1I6V2K8000A2W"
+                ]
+            }
+        ],
+        "A": [
+            {
+                "rrname": "_http._tcp.local."
+            }
+        ],
+        "SRV": [
+            {
+                "rrname": "_http._tcp.local.",
+                "target": "Hi3516A.local.",
+                "weight": 0,
+                "port": 80,
+                "priority": 0
+            }
+        ]
+    },
+    "192.168.1.35": {
+        "PTR": [
+            {
+                "rrname": "_http._tcp.local.",
+                "rdata": "AMC063C86EF4B0E8F9._http._tcp.local."
+            }
+        ],
+        "TXT": [
+            {
+                "rrname": "_http._tcp.local.",
+                "rdata": [
+                    "host=AMC063C86EF4B0E8F9",
+                    "mac=9c:8e:cd:39:f0:e1",
+                    "ip=192.168.1.35",
+                    "subnet=255.255.255.0",
+                    "gw=192.168.1.1",
+                    "dns1=139.134.5.51",
+                    "dns2=139.134.2.190"
+                ]
+            }
+        ],
+        "SRV": [
+            {
+                "rrname": "_http._tcp.local.",
+                "target": "AMC063C86EF4B0E8F9.local.",
+                "weight": 0,
+                "port": 80,
+                "priority": 0
+            }
+        ],
+        "A": [
+            {
+                "rrname": "_http._tcp.local."
+            }
+        ]
+    },
+    "192.168.1.18": {
+        "PTR": [
+            {
+                "rrname": "_http._tcp.local.",
+                "rdata": "HP OfficeJet Pro 6970 [EF7F0D]._http._tcp.local."
+            },
+            {
+                "rrname": "_ipps._tcp.local.",
+                "rdata": "HP OfficeJet Pro 6970 [EF7F0D]._ipps._tcp.local."
+            }
+        ],
+        "TXT": [
+            {
+                "rrname": "_http._tcp.local.",
+                "rdata": [
+                    ""
+                ]
+            },
+            {
+                "rrname": "_ipps._tcp.local.",
+                "rdata": [
+                    "txtvers=1",
+                    "qtotal=1",
+                    "pdl=application/vnd.hp-PCL,image/jpeg,application/PCLm,image/urf,image/pwg-raster",
+                    "rp=ipp/print",
+                    "PaperMax=legal-A4",
+                    "kind=document,envelope,photo,postcard",
+                    "URF=CP1,MT1-2-8-9-10-11,PQ3-4-5,RS300-600,SRGB24,OB9,OFU0,W8-16,DEVW8-16,DEVRGB24-48,ADOBERGB24-48,DM3,FN3,IS1,V1.4",
+                    "ty=HP OfficeJet Pro 6970",
+                    "product=(HP OfficeJet Pro 6970)",
+                    "usb_MFG=HP",
+                    "usb_MDL=OfficeJet Pro 6970",
+                    "priority=30",
+                    "mac=84:69:93:ef:7f:0e",
+                    "adminurl=http://HP846993EF7F0D.local./#hId-pgAirPrint",
+                    "note=",
+                    "mopria-certified=1.3",
+                    "TLS=1.2",
+                    "rfo=ipp/faxout",
+                    "Fax=T",
+                    "UUID=92e9c210-d72b-d22c-9e19-aa0c1ee90668",
+                    "Color=T",
+                    "Duplex=T",
+                    "Scan=T"
+                ]
+            }
+        ],
+        "A": [
+            {
+                "rrname": "_http._tcp.local."
+            },
+            {
+                "rrname": "_ipps._tcp.local."
+            }
+        ],
+        "SRV": [
+            {
+                "rrname": "_http._tcp.local.",
+                "target": "HP846993EF7F0D.local.",
+                "weight": 0,
+                "port": 80,
+                "priority": 0
+            }
+        ]
+    },
+    "192.168.1.49": {
+        "PTR": [
+            {
+                "rrname": "_ecobee._tcp.local.",
+                "rdata": "Office._ecobee._tcp.local."
+            }
+        ],
+        "A": [
+            {
+                "rrname": "_ecobee._tcp.local."
+            }
+        ],
+        "TXT": [
+            {
+                "rrname": "_ecobee._tcp.local.",
+                "rdata": [
+                    "pv=1.1",
+                    "ci=9",
+                    "serial_number=413778263979",
+                    "home_name=My Home"
+                ]
+            }
+        ],
+        "SRV": [
+            {
+                "rrname": "_ecobee._tcp.local.",
+                "target": "Office.local.",
+                "weight": 0,
+                "port": 1201,
+                "priority": 0
+            }
+        ]
+    },
+    "192.168.1.17": {
+        "A": [
+            {
+                "rrname": "Netatmo.local."
+            },
+            {
+                "rrname": "Weather Station._hap._tcp.local."
+            }
+        ],
+        "SRV": [
+            {
+                "rrname": "Weather Station._hap._tcp.local.",
+                "target": "Netatmo.local.",
+                "weight": 0,
+                "port": 5001,
+                "priority": 0
+            }
+        ]
+    },
+    "192.168.1.30": {
+        "A": [
+            {
+                "rrname": "mt7687.local."
+            },
+            {
+                "rrname": "MSG100-0008._hap._tcp.local."
+            }
+        ],
+        "SRV": [
+            {
+                "rrname": "MSG100-0008._hap._tcp.local.",
+                "target": "mt7687.local.",
+                "weight": 0,
+                "port": 5010,
+                "priority": 0
+            }
+        ]
+    },
+    "192.168.1.23": {
+        "A": [
+            {
+                "rrname": "LIFX-Color-684828.local."
+            },
+            {
+                "rrname": "LIFX Color 684828._hap._tcp.local."
+            }
+        ],
+        "SRV": [
+            {
+                "rrname": "LIFX Color 684828._hap._tcp.local.",
+                "target": "LIFX-Color-684828.local.",
+                "weight": 0,
+                "port": 50710,
+                "priority": 0
+            }
+        ]
+    },
+    "192.168.1.6": {
+        "SRV": [
+            {
+                "rrname": "Omna 180Cam HD - 179D._hap._tcp.local.",
+                "target": "DSH-C310-179D.local.",
+                "weight": 0,
+                "port": 5010,
+                "priority": 0
+            }
+        ],
+        "A": [
+            {
+                "rrname": "Omna 180Cam HD - 179D._hap._tcp.local."
+            },
+            {
+                "rrname": "DSH-C310-179D.local."
+            }
+        ]
+    },
+    "192.168.1.37": {
+        "A": [
+            {
+                "rrname": "Wemo Dim2G 068.local."
+            },
+            {
+                "rrname": "Wemo Dim2G 068._hap._tcp.local."
+            }
+        ],
+        "SRV": [
+            {
+                "rrname": "Wemo Dim2G 068._hap._tcp.local.",
+                "target": "Wemo Dim2G 068.local.",
+                "weight": 0,
+                "port": 61286,
+                "priority": 0
+            }
+        ]
+    },
+    "192.168.1.46": {
+        "A": [
+            {
+                "rrname": "03ebbd02-3a94-b6e8-074d-4f13a6fd7f3b.local."
+            },
+            {
+                "rrname": "_googlecast._tcp.local."
+            },
+            {
+                "rrname": "_googlezone._tcp.local."
+            },
+            {
+                "rrname": "03ebbd02-3a94-b6e8-074d-4f13a6fd7f3b._googlezone._tcp.local."
+            },
+            {
+                "rrname": "Chromecast-03ebbd023a94b6e8074d4f13a6fd7f3b._googlecast._tcp.local."
+            }
+        ],
+        "PTR": [
+            {
+                "rrname": "_googlecast._tcp.local.",
+                "rdata": "Chromecast-03ebbd023a94b6e8074d4f13a6fd7f3b._googlecast._tcp.local."
+            },
+            {
+                "rrname": "_googlezone._tcp.local.",
+                "rdata": "03ebbd02-3a94-b6e8-074d-4f13a6fd7f3b._googlezone._tcp.local."
+            }
+        ],
+        "TXT": [
+            {
+                "rrname": "_googlecast._tcp.local.",
+                "rdata": [
+                    "id=03ebbd023a94b6e8074d4f13a6fd7f3b",
+                    "cd=560732CB9D41C04C56AB788AC102CF33",
+                    "rm=9178B53139968872",
+                    "ve=05",
+                    "md=Chromecast",
+                    "ic=/setup/icon.png",
+                    "fn=Dining room TV",
+                    "ca=201221",
+                    "st=0",
+                    "bs=FA8FCA567582",
+                    "nf=1",
+                    "rs="
+                ]
+            },
+            {
+                "rrname": "_googlezone._tcp.local.",
+                "rdata": [
+                    "id=560732CB9D41C04C56AB788AC102CF33",
+                    "UDS",
+                    "CGS"
+                ]
+            }
+        ],
+        "SRV": [
+            {
+                "rrname": "_googlecast._tcp.local.",
+                "target": "03ebbd02-3a94-b6e8-074d-4f13a6fd7f3b.local.",
+                "weight": 0,
+                "port": 8009,
+                "priority": 0
+            }
+        ]
+    },
+    "192.168.1.42": {
+        "SRV": [
+            {
+                "rrname": "Google-Nest-Mini-8582c54774f83c0d77bc401b8cf79e03._googlecast._tcp.local.",
+                "target": "8582c547-74f8-3c0d-77bc-401b8cf79e03.local.",
+                "weight": 0,
+                "port": 8009,
+                "priority": 0
+            }
+        ],
+        "A": [
+            {
+                "rrname": "Google-Nest-Mini-8582c54774f83c0d77bc401b8cf79e03._googlecast._tcp.local."
+            },
+            {
+                "rrname": "8582c547-74f8-3c0d-77bc-401b8cf79e03._googlezone._tcp.local."
+            },
+            {
+                "rrname": "_googlecast._tcp.local."
+            },
+            {
+                "rrname": "_googlezone._tcp.local."
+            }
+        ],
+        "PTR": [
+            {
+                "rrname": "_googlecast._tcp.local.",
+                "rdata": "Google-Nest-Mini-8582c54774f83c0d77bc401b8cf79e03._googlecast._tcp.local."
+            },
+            {
+                "rrname": "_googlezone._tcp.local.",
+                "rdata": "8582c547-74f8-3c0d-77bc-401b8cf79e03._googlezone._tcp.local."
+            }
+        ],
+        "TXT": [
+            {
+                "rrname": "_googlecast._tcp.local.",
+                "rdata": [
+                    "id=8582c54774f83c0d77bc401b8cf79e03",
+                    "cd=7F2A8CCA1FF8EDCCB32BB796CB931716",
+                    "rm=4FA0D43AEA63D2F9",
+                    "ve=05",
+                    "md=Google Nest Mini",
+                    "ic=/setup/icon.png",
+                    "fn=Dining room speaker",
+                    "ca=199172",
+                    "st=0",
+                    "bs=FA8FCA6421C2",
+                    "nf=1",
+                    "rs="
+                ]
+            },
+            {
+                "rrname": "_googlezone._tcp.local.",
+                "rdata": [
+                    "id=7F2A8CCA1FF8EDCCB32BB796CB931716",
+                    "UDS",
+                    "CGS"
+                ]
+            }
+        ]
+    },
+    "192.168.1.16": {
+        "PTR": [
+            {
+                "rrname": "_spotify-connect._tcp.local.",
+                "rdata": "24:18:c6:19:01:1f-SA11040524180-0._spotify-connect._tcp.local."
+            },
+            {
+                "rrname": "_services._dns-sd._udp.local.",
+                "rdata": "_spotify-connect._tcp.local."
+            }
+        ],
+        "SRV": [
+            {
+                "rrname": "_services._dns-sd._udp.local.",
+                "target": "24:18:c6:19:01:1f-SA11040524180-0.local.",
+                "weight": 0,
+                "port": 44645,
+                "priority": 0
+            }
+        ],
+        "TXT": [
+            {
+                "rrname": "_services._dns-sd._udp.local.",
+                "rdata": [
+                    "CPath=/zc/0",
+                    "VERSION=1.0",
+                    "Stack=SP"
+                ]
+            }
+        ],
+        "A": [
+            {
+                "rrname": "_services._dns-sd._udp.local."
+            }
+        ]
+    },
+    "192.168.1.38": {
+        "SRV": [
+            {
+                "rrname": "Living-Room._ecobee._tcp.local.",
+                "target": "Living-Room.local.",
+                "weight": 0,
+                "port": 1201,
+                "priority": 0
+            }
+        ],
+        "A": [
+            {
+                "rrname": "Living-Room._ecobee._tcp.local."
+            },
+            {
+                "rrname": "Living-Room.local."
+            }
+        ]
+    }
+}

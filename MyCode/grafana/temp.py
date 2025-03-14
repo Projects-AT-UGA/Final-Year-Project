@@ -44,7 +44,9 @@ device_dictionary = {
     "192.168.2.48": "Ring_Doorbell4",
     "192.168.2.49": "Ecobee_3liteSmartThermostat",
     "192.168.2.50": "Google_NestThermostat",
-    "192.168.2.245": "August Wi-fi Smart Lock"
+    "192.168.2.245": "August Wi-fi Smart Lock",
+
+    
 }
 
 # MySQL database connection setup
@@ -185,7 +187,7 @@ def update_device_status(ip, device_name, current_time, last_seen_time):
     connection.commit()
     cursor.close()
     connection.close()
-
+temp=set()
 # Function to process pcap files and extract traffic data, including subfolders
 def process_pcap_files(folder_path):
     traffic_data = {}
@@ -200,10 +202,10 @@ def process_pcap_files(folder_path):
                 for packet in packets:
                     if packet.haslayer(scapy.IP):
                         ip = packet[scapy.IP].src
+                        
                         if ip in device_dictionary:
                             packet_time = datetime.fromtimestamp(float(packet.time))
                             bytes_len = len(packet)
-
                             if ip not in traffic_data:
                                 traffic_data[ip] = {}
 
@@ -216,18 +218,22 @@ def process_pcap_files(folder_path):
                                     traffic_data[ip][date_key]['tcp_sent'] += bytes_len
                                 elif ip == packet[scapy.IP].dst:
                                     traffic_data[ip][date_key]['tcp_received'] += bytes_len
-                                    print(bytes_len)
                             elif packet.haslayer(scapy.UDP):
+                                # print(packet[scapy.IP])
+                                
                                 if ip == packet[scapy.IP].src:
                                     traffic_data[ip][date_key]['udp_sent'] += bytes_len
                                 elif ip == packet[scapy.IP].dst:
                                     traffic_data[ip][date_key]['udp_received'] += bytes_len
-                                    print(bytes_len)
+                                # print(f"Captured UDP Packet: {packet.summary()}")
+                                
+
                             # if "192.168" in packet[scapy.IP].dst:
                             #     print(packet[scapy.IP].dst)
                             if ip not in active_devices or packet_time > active_devices[ip]:
                                 active_devices[ip] = packet_time
-                        ip = packet[scapy.IP].dst
+                        
+                        temp.add(packet[scapy.IP].dst)
                         if ip in device_dictionary:
                             packet_time = datetime.fromtimestamp(float(packet.time))
                             bytes_len = len(packet)
@@ -238,22 +244,26 @@ def process_pcap_files(folder_path):
                             date_key = packet_time.date()
                             if date_key not in traffic_data[ip]:
                                 traffic_data[ip][date_key] = {'udp_sent': 0, 'udp_received': 0, 'tcp_sent': 0, 'tcp_received': 0}
-
+                            
                             if packet.haslayer(scapy.TCP):
                                 if ip == packet[scapy.IP].src:
                                     traffic_data[ip][date_key]['tcp_sent'] += bytes_len
                                 elif ip == packet[scapy.IP].dst:
                                     traffic_data[ip][date_key]['tcp_received'] += bytes_len
                             elif packet.haslayer(scapy.UDP):
+                                #  print(packet[scapy.IP])
+                                 temp.add(packet[scapy.IP].dst)
                                  if ip == packet[scapy.IP].src:
                                     traffic_data[ip][date_key]['udp_sent'] += bytes_len
                                  elif ip == packet[scapy.IP].dst:
                                     traffic_data[ip][date_key]['udp_received'] += bytes_len
+                                
                             # if "192.168" in packet[scapy.IP].dst:
                             #     print(packet[scapy.IP].dst)
                             if ip not in active_devices or packet_time > active_devices[ip]:
                                 active_devices[ip] = packet_time
     return traffic_data, active_devices
+    
 
 # Function to update device status for all devices
 def update_device_status_for_all_devices(active_devices):
