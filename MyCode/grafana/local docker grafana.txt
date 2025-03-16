@@ -5,6 +5,10 @@ docker exec -it root mysql -u root -p
 CREATE DATABASE main;
 use main;
 
+
+docker run --name root -e MYSQL_ROOT_PASSWORD=Sql@10071999 -p 3307:3306 -v mysql-data:/var/lib/mysql -d mysql:latest
+
+
 ===============================================================
 docker pull grafana/grafana
 docker run -d --name=grafana -p 3001:3000 -v grafana-storage:/var/lib/grafana grafana/grafana
