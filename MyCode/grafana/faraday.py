@@ -1,7 +1,3 @@
-
-
-
-
 import os
 import scapy.all as scapy
 import mysql.connector
@@ -140,56 +136,60 @@ def process_pcap_files(folder_path):
                 temp_traffic_data = {}
                 temp_active_devices = {}
                 for packet in packets:
-                    if packet.haslayer(scapy.UDP) and packet[scapy.UDP].dport == 5353: #check for mDNS
-                        if packet.haslayer(scapy.DNS) and packet[scapy.DNS].qr == 0:
-                            ip = packet[scapy.IP].src
-                            if ip in device_dictionary:
-                                packet_time = datetime.fromtimestamp(float(packet.time))
-                                bytes_len = len(packet)
-                                if ip not in temp_traffic_data:
-                                    temp_traffic_data[ip] = {}
-                                date_key = packet_time.date()
-                                if date_key not in temp_traffic_data[ip]:
-                                    temp_traffic_data[ip][date_key] = {'udp_sent': 0, 'udp_received': 0, 'tcp_sent': 0, 'tcp_received': 0, 'icmp_sent': 0, 'icmp_received': 0, 'dns_queries': 0, 'distinct_dns_queries': set()}
-                                temp_traffic_data[ip][date_key]['dns_queries'] += 1
-                                dns_query_name = packet[scapy.DNSQR].qname.decode('utf-8', errors='ignore')
-                                temp_traffic_data[ip][date_key]['distinct_dns_queries'].add(dns_query_name)
-                                if ip not in temp_active_devices or packet_time > temp_active_devices[ip]:
-                                    temp_active_devices[ip] = packet_time
-                    elif packet.haslayer(scapy.IP): #regular IP traffic
-                        ip = packet[scapy.IP].src
-                        dst_ip = packet[scapy.IP].dst
-                        for ip_addr in [ip, dst_ip]:
-                            if ip_addr in device_dictionary:
-                                #remainder of original code.
-                                packet_time = datetime.fromtimestamp(float(packet.time))
-                                bytes_len = len(packet)
-                                if ip_addr not in temp_traffic_data:
-                                    temp_traffic_data[ip_addr] = {}
-                                date_key = packet_time.date()
-                                if date_key not in temp_traffic_data[ip_addr]:
-                                    temp_traffic_data[ip_addr][date_key] = {'udp_sent': 0, 'udp_received': 0, 'tcp_sent': 0, 'tcp_received': 0, 'icmp_sent': 0, 'icmp_received': 0, 'dns_queries': 0, 'distinct_dns_queries': set()}
-                                if packet.haslayer(scapy.TCP):
-                                    if ip_addr == packet[scapy.IP].src:
-                                        temp_traffic_data[ip_addr][date_key]['tcp_sent'] += bytes_len
-                                    elif ip_addr == packet[scapy.IP].dst:
-                                        temp_traffic_data[ip_addr][date_key]['tcp_received'] += bytes_len
-                                elif packet.haslayer(scapy.UDP):
-                                    if ip_addr == packet[scapy.IP].src:
-                                        temp_traffic_data[ip_addr][date_key]['udp_sent'] += bytes_len
-                                    elif ip_addr == packet[scapy.IP].dst:
-                                        temp_traffic_data[ip_addr][date_key]['udp_received'] += bytes_len
-                                elif packet.haslayer(scapy.ICMP):
-                                    if ip_addr == packet[scapy.IP].src:
-                                        temp_traffic_data[ip_addr][date_key]['icmp_sent'] += bytes_len
-                                    elif ip_addr == packet[scapy.IP].dst:
-                                        temp_traffic_data[ip_addr][date_key]['icmp_received'] += bytes_len
-                                elif packet.haslayer(scapy.DNS) and packet[scapy.DNS].qr == 0:
-                                    temp_traffic_data[ip_addr][date_key]['dns_queries'] += 1
+                    try:
+                        if packet.haslayer(scapy.UDP) and packet[scapy.UDP].dport == 5353: #check for mDNS
+                            if packet.haslayer(scapy.DNS) and packet[scapy.DNS].qr == 0:
+                                ip = packet[scapy.IP].src
+                                if ip in device_dictionary:
+                                    packet_time = datetime.fromtimestamp(float(packet.time))
+                                    bytes_len = len(packet)
+                                    if ip not in temp_traffic_data:
+                                        temp_traffic_data[ip] = {}
+                                    date_key = packet_time.date()
+                                    if date_key not in temp_traffic_data[ip]:
+                                        temp_traffic_data[ip][date_key] = {'udp_sent': 0, 'udp_received': 0, 'tcp_sent': 0, 'tcp_received': 0, 'icmp_sent': 0, 'icmp_received': 0, 'dns_queries': 0, 'distinct_dns_queries': set()}
+                                    temp_traffic_data[ip][date_key]['dns_queries'] += 1
                                     dns_query_name = packet[scapy.DNSQR].qname.decode('utf-8', errors='ignore')
-                                    temp_traffic_data[ip_addr][date_key]['distinct_dns_queries'].add(dns_query_name)
-                                if ip_addr not in temp_active_devices or packet_time > temp_active_devices[ip_addr]:
-                                    temp_active_devices[ip_addr] = packet_time
+                                    temp_traffic_data[ip][date_key]['distinct_dns_queries'].add(dns_query_name)
+                                    if ip not in temp_active_devices or packet_time > temp_active_devices[ip]:
+                                        temp_active_devices[ip] = packet_time
+                        elif packet.haslayer(scapy.IP): #regular IP traffic
+                            ip = packet[scapy.IP].src
+                            dst_ip = packet[scapy.IP].dst
+                            for ip_addr in [ip, dst_ip]:
+                                if ip_addr in device_dictionary:
+                                    #remainder of original code.
+                                    packet_time = datetime.fromtimestamp(float(packet.time))
+                                    bytes_len = len(packet)
+                                    if ip_addr not in temp_traffic_data:
+                                        temp_traffic_data[ip_addr] = {}
+                                    date_key = packet_time.date()
+                                    if date_key not in temp_traffic_data[ip_addr]:
+                                        temp_traffic_data[ip_addr][date_key] = {'udp_sent': 0, 'udp_received': 0, 'tcp_sent': 0, 'tcp_received': 0, 'icmp_sent': 0, 'icmp_received': 0, 'dns_queries': 0, 'distinct_dns_queries': set()}
+                                    if packet.haslayer(scapy.TCP):
+                                        if ip_addr == packet[scapy.IP].src:
+                                            temp_traffic_data[ip_addr][date_key]['tcp_sent'] += bytes_len
+                                        elif ip_addr == packet[scapy.IP].dst:
+                                            temp_traffic_data[ip_addr][date_key]['tcp_received'] += bytes_len
+                                    elif packet.haslayer(scapy.UDP):
+                                        if ip_addr == packet[scapy.IP].src:
+                                            temp_traffic_data[ip_addr][date_key]['udp_sent'] += bytes_len
+                                        elif ip_addr == packet[scapy.IP].dst:
+                                            temp_traffic_data[ip_addr][date_key]['udp_received'] += bytes_len
+                                    elif packet.haslayer(scapy.ICMP):
+                                        if ip_addr == packet[scapy.IP].src:
+                                            temp_traffic_data[ip_addr][date_key]['icmp_sent'] += bytes_len
+                                        elif ip_addr == packet[scapy.IP].dst:
+                                            temp_traffic_data[ip_addr][date_key]['icmp_received'] += bytes_len
+                                    elif packet.haslayer(scapy.DNS) and packet[scapy.DNS].qr == 0:
+                                        temp_traffic_data[ip_addr][date_key]['dns_queries'] += 1
+                                        dns_query_name = packet[scapy.DNSQR].qname.decode('utf-8', errors='ignore')
+                                        temp_traffic_data[ip_addr][date_key]['distinct_dns_queries'].add(dns_query_name)
+                                    if ip_addr not in temp_active_devices or packet_time > temp_active_devices[ip_addr]:
+                                        temp_active_devices[ip_addr] = packet_time
+                    except Exception as packet_error:
+                        print(f"Error processing packet in {filename}: {packet_error}")
+                        continue
 
                 for ip, date_data in temp_traffic_data.items():
                     device_name = device_dictionary[ip]
