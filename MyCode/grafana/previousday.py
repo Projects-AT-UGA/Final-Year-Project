@@ -47,14 +47,17 @@ device_dictionary = {
     "192.168.2.245": "August Wi-fi Smart Lock",
 }
 
-# MySQL database connection setup
+
+
+
 db_config = {
     'host': 'localhost',
     'port': 3307,
     'user': 'root',
-    'password': 'Sql@10071999',  # Replace with your MySQL password
+    'password': 'Iotlab@2025',  # Replace with your MySQL password
     'database': 'main'  # Database name
 }
+
 
 # Function to connect to MySQL database
 def connect_db():
@@ -76,6 +79,8 @@ def create_tables_if_not_exists():
         udp_bytes_received BIGINT,
         tcp_bytes_sent BIGINT,
         tcp_bytes_received BIGINT,
+        icmp_bytes_sent BIGINT,
+        icmp_bytes_received BIGINT,
         UNIQUE (ip_address, date)
     );
     """
@@ -97,19 +102,21 @@ def create_tables_if_not_exists():
     connection.close()
 
 # Function to insert or update device info (ensuring ip_address and date combination is unique)
-def insert_or_update_device_info(ip, device_name, date, udp_sent, udp_received, tcp_sent, tcp_received):
+def insert_or_update_device_info(ip, device_name, date, udp_sent, udp_received, tcp_sent, tcp_received, icmp_sent, icmp_received):
     connection = connect_db()
     cursor = connection.cursor()
 
     cursor.execute("""
-        INSERT INTO device_info (ip_address, device_name, date, udp_bytes_sent, udp_bytes_received, tcp_bytes_sent, tcp_bytes_received)
-        VALUES (%s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO device_info (ip_address, device_name, date, udp_bytes_sent, udp_bytes_received, tcp_bytes_sent, tcp_bytes_received, icmp_bytes_sent, icmp_bytes_received)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
         ON DUPLICATE KEY UPDATE
         udp_bytes_sent = udp_bytes_sent + VALUES(udp_bytes_sent),
         udp_bytes_received = udp_bytes_received + VALUES(udp_bytes_received),
         tcp_bytes_sent = tcp_bytes_sent + VALUES(tcp_bytes_sent),
-        tcp_bytes_received = tcp_bytes_received + VALUES(tcp_bytes_received)
-    """, (ip, device_name, date, udp_sent, udp_received, tcp_sent, tcp_received))
+        tcp_bytes_received = tcp_bytes_received + VALUES(tcp_bytes_received),
+        icmp_bytes_sent = icmp_bytes_sent + VALUES(icmp_bytes_sent),
+        icmp_bytes_received = icmp_bytes_received + VALUES(icmp_bytes_received)
+    """, (ip, device_name, date, udp_sent, udp_received, tcp_sent, tcp_received, icmp_sent, icmp_received))
 
     connection.commit()
     cursor.close()
@@ -130,7 +137,8 @@ def get_relative_time(last_seen_time):
         return f"{int(diff.total_seconds() // 86400)} days ago"
 
 temp=set()
-# Function to process pcap files and extract traffic data
+# Function to process pcap files and extract
+
 def process_pcap_files(folder_path):
     traffic_data = {}
     active_devices = {}
@@ -141,34 +149,57 @@ def process_pcap_files(folder_path):
                 file_path = os.path.join(root, filename)
                 packets = scapy.rdpcap(file_path)
 
+                temp_traffic_data = {} #local traffic data for each pcap
+                temp_active_devices = {} #local active devices for each pcap
+
                 for packet in packets:
                     if packet.haslayer(scapy.IP):
-                            ip = packet[scapy.IP].src
+                        ip = packet[scapy.IP].src
+                        dst_ip = packet[scapy.IP].dst
 
-                            if ip in device_dictionary:
+                        for ip_addr in [ip, dst_ip]:
+
+                            if ip_addr in device_dictionary:
                                 packet_time = datetime.fromtimestamp(float(packet.time))
                                 bytes_len = len(packet)
-                                if ip not in traffic_data:
-                                    traffic_data[ip] = {}
+                                if ip_addr not in temp_traffic_data:
+                                    temp_traffic_data[ip_addr] = {}
 
                                 date_key = packet_time.date()
-                                if date_key not in traffic_data[ip]:
-                                    traffic_data[ip][date_key] = {'udp_sent': 0, 'udp_received': 0, 'tcp_sent': 0, 'tcp_received': 0}
+                                if date_key not in temp_traffic_data[ip_addr]:
+                                    temp_traffic_data[ip_addr][date_key] = {'udp_sent': 0, 'udp_received': 0, 'tcp_sent': 0, 'tcp_received': 0, 'icmp_sent': 0, 'icmp_received': 0}
 
                                 if packet.haslayer(scapy.TCP):
-                                    if ip == packet[scapy.IP].src:
-                                        traffic_data[ip][date_key]['tcp_sent'] += bytes_len
-                                    elif ip == packet[scapy.IP].dst:
-                                        traffic_data[ip][date_key]['tcp_received'] += bytes_len
+                                    if ip_addr == packet[scapy.IP].src:
+                                        temp_traffic_data[ip_addr][date_key]['tcp_sent'] += bytes_len
+                                    elif ip_addr == packet[scapy.IP].dst:
+                                        temp_traffic_data[ip_addr][date_key]['tcp_received'] += bytes_len
                                 elif packet.haslayer(scapy.UDP):
-                                    if ip == packet[scapy.IP].src:
-                                        traffic_data[ip][date_key]['udp_sent'] += bytes_len
-                                    elif ip == packet[scapy.IP].dst:
-                                        traffic_data[ip][date_key]['udp_received'] += bytes_len
+                                    if ip_addr == packet[scapy.IP].src:
+                                        temp_traffic_data[ip_addr][date_key]['udp_sent'] += bytes_len
+                                    elif ip_addr == packet[scapy.IP].dst:
+                                        temp_traffic_data[ip_addr][date_key]['udp_received'] += bytes_len
+                                elif packet.haslayer(scapy.ICMP):
+                                    if ip_addr == packet[scapy.IP].src:
+                                        temp_traffic_data[ip_addr][date_key]['icmp_sent'] += bytes_len
+                                    elif ip_addr == packet[scapy.IP].dst:
+                                        temp_traffic_data[ip_addr][date_key]['icmp_received'] += bytes_len
 
-                                if ip not in active_devices or packet_time > active_devices[ip]:
-                                    active_devices[ip] = packet_time
+                                if ip_addr not in temp_active_devices or packet_time > temp_active_devices[ip_addr]:
+                                    temp_active_devices[ip_addr] = packet_time
                                 temp.add(packet[scapy.IP].dst)
+
+                #insert data after each pcap file.
+                for ip, date_data in temp_traffic_data.items():
+                    device_name = device_dictionary[ip]
+                    for date, data in date_data.items():
+                        insert_or_update_device_info(ip, device_name, date, data['udp_sent'], data['udp_received'], data['tcp_sent'], data['tcp_received'], data['icmp_sent'], data['icmp_received'])
+
+                if temp_active_devices:
+                    update_device_status_for_all_devices(temp_active_devices)
+                else:
+                    print(f"No devices found in {filename}.")
+                print(f"Processed and inserted data from {filename}")
 
     return traffic_data, active_devices
 
@@ -212,18 +243,8 @@ def update_device_status_for_all_devices(active_devices):
 # Main function
 def main():
     create_tables_if_not_exists()
-    folder_path = '/data/UGAIoTpcaps/AUSTRALIA_PCAPS'  # Adjust as needed
+    folder_path = '/data/UGAIoTpcaps/INDIA_PCAPS'  # Adjust as needed
     traffic_data, active_devices = process_pcap_files(folder_path)
-
-    for ip, date_data in traffic_data.items():
-        device_name = device_dictionary[ip]
-        for date, data in date_data.items():
-            insert_or_update_device_info(ip, device_name, date, data['udp_sent'], data['udp_received'], data['tcp_sent'], data['tcp_received'])
-
-    if active_devices:
-        update_device_status_for_all_devices(active_devices)
-    else:
-        print("No devices found in the pcap files.")
 
     print("Updated device traffic data with one-to-many relationship, including subfolders.")
 
