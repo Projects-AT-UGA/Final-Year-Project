@@ -1,0 +1,21 @@
+time range
+ip address
+
+
+in time frame
+y axis 
+domain name string 
+x axis
+number of queries
+
+
+for destination ip address tcp and udp
+y axis 
+destination ip address string 
+x axis 
+number of bytes to and from
+in time range
+
+
+
+latest new data  copying script 
