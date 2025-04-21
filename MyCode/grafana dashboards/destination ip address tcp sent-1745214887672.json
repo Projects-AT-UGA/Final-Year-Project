@@ -1,0 +1,247 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 11,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "eefyktaj1cx6od"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 22,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "horizontal",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "dataset": "main",
+          "datasource": {
+            "type": "mysql",
+            "uid": "eefyktaj1cx6od"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT dest_ip, SUM(tcp_bytes_sent) FROM main.destination_traffic WHERE (src_ip = '${ip_address_filter:single}' AND date BETWEEN FROM_UNIXTIME($__from / 1000) AND FROM_UNIXTIME($__to / 1000)) GROUP BY dest_ip ORDER BY SUM(tcp_bytes_sent) DESC;",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [
+                  {
+                    "name": "dest_ip",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "name": "SUM",
+                "parameters": [
+                  {
+                    "name": "tcp_bytes_sent",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "name": "dest_ip",
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50,
+            "orderBy": {
+              "property": {
+                "name": "SUM(tcp_bytes_sent)",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "whereJsonTree": {
+              "children1": [
+                {
+                  "id": "8bbb889a-cdef-4012-b456-7196183f4276",
+                  "properties": {
+                    "field": "src_ip",
+                    "fieldSrc": "field",
+                    "operator": "equal",
+                    "value": [
+                      "${ip_address_filter:single}"
+                    ],
+                    "valueError": [
+                      null
+                    ],
+                    "valueSrc": [
+                      "value"
+                    ],
+                    "valueType": [
+                      "text"
+                    ]
+                  },
+                  "type": "rule"
+                },
+                {
+                  "id": "b8b99b8b-89ab-4cde-b012-319618495a0c",
+                  "properties": {
+                    "field": "date",
+                    "fieldSrc": "field",
+                    "operator": "between",
+                    "value": [
+                      "2022-01-01",
+                      null
+                    ],
+                    "valueError": [
+                      null,
+                      null
+                    ],
+                    "valueSrc": [
+                      "value",
+                      "value"
+                    ],
+                    "valueType": [
+                      "date",
+                      "date"
+                    ]
+                  },
+                  "type": "rule"
+                }
+              ],
+              "id": "bb9a888b-0123-4456-b89a-b1961838cac0",
+              "type": "group"
+            },
+            "whereString": "src_ip = '${ip_address_filter:single}'"
+          },
+          "table": "destination_traffic"
+        }
+      ],
+      "title": "Panel Title",
+      "type": "barchart"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "192.168.1.26",
+          "value": "192.168.1.26"
+        },
+        "definition": "SELECT DISTINCT  ip_address FROM main.device_status order by ip_address asc;",
+        "includeAll": true,
+        "label": "Filter by IP address",
+        "name": "ip_address_filter",
+        "options": [],
+        "query": "SELECT DISTINCT  ip_address FROM main.device_status order by ip_address asc;",
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "2025-03-20T04:00:00.000Z",
+    "to": "2025-04-21T03:59:59.000Z"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "destination ip address tcp sent",
+  "uid": "deici3tj6wtmob",
+  "version": 9,
+  "weekStart": ""
+}

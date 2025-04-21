@@ -1,0 +1,77 @@
+To Visualize data create MySQL container and run it
+===============================================================================================================================================
+docker pull mysql                                                                                                           #pull the mysql image
+docker run --name root -e MYSQL_ROOT_PASSWORD=Sql@10071999 -p 3307:3306 -v mysql-data:/var/lib/mysql -d mysql:latest        #run the mysql container on port 3307
+docker exec -it root mysql -u root -p                                                                                       #login to the mysql container
+CREATE DATABASE main;  #create a database
+use main; #select the database 
+
+
+Then create a MySQL table and inserting data that needs to be Visualized in grafana
+===============================================================================================================================================
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS device_status (
+id INT AUTO_INCREMENT PRIMARY KEY,
+ip_address VARCHAR(15),
+device_name VARCHAR(255),
+last_seen_time DATETIME,
+previous_seen_time VARCHAR(255)
+);
+""")   
+cursor.execute("INSERT INTO device_status (ip_address, device_name, last_seen_time, previous_seen_time) VALUES (%s, %s, %s, %s)", (ip, device_name, last_seen_time, previous_seen_time))
+
+
+Then Create a grafana container and run it
+===============================================================================================================================================
+docker pull grafana/grafana                                                                       #pull the grafana image
+docker run -d --name=grafana -p 3001:3000 -v grafana-storage:/var/lib/grafana grafana/grafana     #run the grafana container on port 3001
+goto http://localhost:3001/login                                                                  #login to the grafana container
+default:
+username: admin
+password: admin
+
+
+Add MySQL as datasource to  Grafana 
+===============================================================================================================================================
+connection values
+hosturl: host.docker.internal:3307                #connect to the mysql container on port 3307
+database: main                                    #connect to database named main
+username: root
+password: Sql@10071999
+
+
+
+
+Create a new dashboard in grafana
+===============================================================================================================================================
+click on new dashboard then click new Visualization
+select mysql as the datasource
+change the Queries tab from Builder mode to Code mode and write mysql queries like below
+Query example:   "SELECT device_name, last_seen_time, previous_seen_time, ip_address FROM main.device_status" 
+
+
+
+
+
+To write more complex queries by using variables
+===============================================================================================================================================
+click on setting and click on variables and click add variable
+name: ip_address_filter                                                                 #Give a name to variable
+label: Filter by IP address                                                             #Give a label to variable
+Query: SELECT DISTINCT ip_address FROM main.device_status order by ip_address asc;      #write a MySql query to get values for the variable in this example we are getting all the ip addresses
+Then reference the varaible in your Queries with use of name '${ip_address_filter:single}'
+Query example:  SELECT dest_ip, SUM(tcp_bytes_sent) FROM main.destination_traffic WHERE (src_ip = '${ip_address_filter:single}' AND date BETWEEN FROM_UNIXTIME($__from / 1000) AND FROM_UNIXTIME($__to / 1000)) GROUP BY dest_ip ORDER BY SUM(tcp_bytes_sent) DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

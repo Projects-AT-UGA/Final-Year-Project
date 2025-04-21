@@ -26,10 +26,6 @@ database: main
 username: root
 password: Sql@10071999
 
-
-
-
-
 ------------------------------Things to be do -----------------------------
 Number of active devices
 tcp udp devices
@@ -47,10 +43,28 @@ number of active devices and inactive devices
 
 top devices 3 devices statistics
 
-initial version 3 week from now some information displayed in Grafana.
-spencer for server access docker container on faraday, running and deploying 
-==================things still that need to be done================================
-Need to connect NAS to faraday
+
+time range
+ip address
+
+
+in time frame
+y axis 
+domain name string 
+x axis
+number of queries
+
+
+for destination ip address tcp and udp
+y axis 
+destination ip address string 
+x axis 
+number of bytes to and from
+in time range
+
+
+
+latest new data  copying script 
 
 
 
